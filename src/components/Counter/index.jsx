@@ -1,9 +1,10 @@
-import React, { useState, useEffect, Component, PureComponent } from 'react';
+import React, { useCallback, useState, useEffect, Component, PureComponent } from 'react';
 import Button from '../Button';
 import ControlledNumInput from '../ControlledNumInput';
 
 import style from './Counter.module.sass';
 
+/*
 class Counter extends Component {
   constructor (props) {
     super(props);
@@ -81,22 +82,22 @@ class Counter extends Component {
     );
   }
 }
+*/
 
-/*
 function Counter (props) {
   const { step } = props;
   console.log('render');
 
-  const toggleMode = () => setIsIncrement(!isIncrement);
-  const toggleAutoClick = () => setIsAutoClick(!isAutoClick);
+  const toggleMode = useCallback(() => setIsIncrement(!isIncrement), [isIncrement]);
+  const toggleAutoClick = useCallback(() => setIsAutoClick(!isAutoClick), [isAutoClick]);
 
-  const handleCount = () =>
-    isIncrement ? setCounter(counter + step) : setCounter(counter - step);
+  const handleCount = useCallback(() =>
+    isIncrement ? setCounter(counter + step) : setCounter(counter - step), [isIncrement, counter, step] );
 
-  const handleChangeDelay = newValue => {
+  const handleChangeDelay = useCallback ((newValue) => {
     setClicksPerSecond(newValue);
     setDelay(1000 / newValue);
-  };
+  },[]);
 
   const [counter, setCounter] = useState(0);
   const [isIncrement, setIsIncrement] = useState(true);
@@ -115,7 +116,7 @@ function Counter (props) {
     clearTimeout(timer);
   }, [isIncrement, delay, step, isAutoClick]);
 
-  const countButtonCaption = isIncrement ? 'Increment' : 'Decrement';
+  const countButtonCaption = useMemo(()=>isIncrement ? 'Increment' : 'Decrement', [isIncrement]);
   return (
     <>
       <div className={style.container}>
@@ -136,5 +137,5 @@ function Counter (props) {
       </div>
     </>
   );
-}*/
+}
 export default Counter;

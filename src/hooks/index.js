@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 
-
-function MouseTracker ({ children }) {
+export function useMouse () {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
 
@@ -16,11 +14,5 @@ function MouseTracker ({ children }) {
     setY(event.clientY);
   };
 
-  return children({ x, y });
+  return { x, y };
 }
-
-MouseTracker.propTypes = {
-  children: PropTypes.func.isRequired,
-};
-
-export default MouseTracker;
