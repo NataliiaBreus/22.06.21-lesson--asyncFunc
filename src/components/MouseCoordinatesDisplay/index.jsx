@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMouse } from '../../hooks';
-import MouseTracker from '../MouseTracker';
+
 
 function MouseCoordinatesDisplay () {
   const { x, y } = useMouse();

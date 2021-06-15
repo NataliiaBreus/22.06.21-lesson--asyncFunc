@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useReducer } from 'react';
 import style from './SignUpForm.module.scss';
 import FormInput from './FormInput';
 import * as constants from '../../constants';
@@ -9,7 +9,21 @@ const intialValues = {
   email: '',
   password: '',
 };
+const reducer = (state, action) => {
+  const { name, value } = action;
+  const newState = {
+    ...state,
+    [name]: value,
+  };
+  return newState;
+}
 
+function SignUpForm (props) {
+  const [state, dispatch] = useReducer (reducer, initialValues),
+
+}
+
+/*
 class SignUpForm extends Component {
   constructor (props) {
     super(props);
@@ -66,11 +80,6 @@ class SignUpForm extends Component {
     );
   }
 }
-
+*/
 export default SignUpForm;
 
-/*
-  1. Написать функции-обработчики изменений имени, фамилии, email.
-  2. Реализовать удаление пробелов во всех полях.
-  3. Добавить валидацию этих полей.
-*/
