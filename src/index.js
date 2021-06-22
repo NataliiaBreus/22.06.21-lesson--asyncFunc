@@ -16,3 +16,7 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+async function getPrimitivesAsync () {
+  return [1,'1', true, null, undefined, BigInt(5), Symbol()]
+}

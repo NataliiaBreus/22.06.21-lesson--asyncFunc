@@ -11,6 +11,7 @@ import MouseTrackerPage from './pages/MouseTrackerPage';
 import Tree from './components/Tree';
 import Home from './pages/Home';
 import { UserContext, ThemeContext } from './contexts';
+import SignUpForm from './components/SignUpForm';
 
 import CONSTANTS from './constants';
 const { THEMES } = CONSTANTS;
