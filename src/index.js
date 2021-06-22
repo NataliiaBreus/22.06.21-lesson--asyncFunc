@@ -20,3 +20,23 @@ reportWebVitals();
 async function getPrimitivesAsync () {
   return [1,'1', true, null, undefined, BigInt(5), Symbol()]
 }
+
+async function getAwait () {
+  const primitives = await getPrimitivesAsync ()
+  console.log(primitives)
+  return primitives
+}
+
+
+
+async function delay() {
+  const promise1 = new Promise ((resolve, reject) => {
+    setTimeout(() => {
+      resolve('test');
+    }, 2000);
+  });
+  const data = await promise1
+  console.log(data)
+  return data
+}
+
